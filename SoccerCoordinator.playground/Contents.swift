@@ -64,8 +64,9 @@ for player in players {
     
     if(player.1.experience == true){
         addPlayer(player.0)
+        sendLetter(player.0, child: player.1.parent, team: name)
+
     }
-  sendLetter(player.0, child: player.1.parent, team: name)
 }
 
 //iterates through the inexperienced players and adds them to the teams
@@ -73,8 +74,8 @@ for player in players {
     
     if(player.1.experience == false){
         addPlayer(player.0)
+        sendLetter(player.0, child: player.1.parent, team: name)
     }
     
-    sendLetter(player.0, child: player.1.parent, team: name)
 
 }
