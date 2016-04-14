@@ -24,28 +24,57 @@ let players : [String:(height: Int, experience: Bool, parent: String)] = [
     "Les Clay":(42,true,"Wynonna Brown"),
     "Herschel Krustofski":(45,true,"Hymen and Rachel Krustofski")]
 
-//function to add players to the arrays
+//function to add players to the arrays or "teams"
+var name = ""
+
 func addPlayer(player: String){
 
     if(dragons.count <= sharks.count && dragons.count <= raptors.count){
         dragons.append(player)
+        name = "dragons"
     } else if (sharks.count <= dragons.count && sharks.count <= raptors.count){
         sharks.append(player)
+        name = "sharks"
     } else if (raptors.count <= dragons.count && raptors.count <= sharks.count){
         raptors.append(player)
+        name = "raptors"
     }
 }
 
+//sends a letter to the respective player's parents
+
+func sendLetter(parent: String, child: String, team: String){
+    print("Dear \(parent),\n")
+    print("Your child, \(child) has been drafted to the \(team) and we would like to discuss the signing of their contract\n")
+    var str = ""
+    if(team == "dragons"){
+        str = "March 17, 1:00 pm"
+    } else if (team == "sharks"){
+        str = "March 17 at 3:00 pm"
+    } else {
+        str = "March 18 at 1:00 pm"
+    }
+    print("Your scheduled practice time is \(str)\n")
+    print("Thank you,\n\nThe Boss\n\n")
+}
+
+
+//iterates through the experienced players and adds them to the teams
 for player in players {
     
     if(player.1.experience == true){
         addPlayer(player.0)
     }
+  sendLetter(player.0, child: player.1.parent, team: name)
 }
 
+//iterates through the inexperienced players and adds them to the teams
 for player in players {
     
     if(player.1.experience == false){
         addPlayer(player.0)
     }
+    
+    sendLetter(player.0, child: player.1.parent, team: name)
+
 }
