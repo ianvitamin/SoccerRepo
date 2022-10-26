@@ -1,2 +1,2 @@
 # SoccerRepo
-Soccer Organizer Thingy
+Soccer Organizer Homework
